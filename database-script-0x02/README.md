@@ -1,0 +1,12 @@
+-- ✅ **Sample Data Summary**
+-- ============================================================
+-- Users: 4 (1 guest, 2 hosts, 1 admin)
+-- Properties: 3 (2 owned by Michael, 1 owned by Mary)
+-- Bookings: 2 (both made by John)
+-- Payments: 1 (for the confirmed booking)
+-- Reviews: 2 (by John)
+-- Messages: 2 (conversation between guest and host)
+
+-- ============================================================
+-- END OF SAMPLE DATA
+-- ============================================================
