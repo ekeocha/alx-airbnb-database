@@ -36,3 +36,21 @@ ON Review (property_id);
 
 CREATE INDEX idx_review_user_id 
 ON Review (user_id);
+
+
+
+EXPLAIN 
+SELECT * 
+FROM Booking 
+WHERE user_id = 'a1b2c3d4';
+
+--⏱ Without index → Full table scan, slower performance on large datasets.
+-- ✅ With index → Uses idx_booking_user_id (index scan), much faster performance.
+
+
+EXPLAIN ANALYZE
+SELECT p.name, COUNT(b.booking_id)
+FROM Property p
+JOIN Booking b ON p.property_id = b.property_id
+GROUP BY p.name
+ORDER BY COUNT(b.booking_id) DESC;
