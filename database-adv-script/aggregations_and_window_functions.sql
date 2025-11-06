@@ -14,11 +14,19 @@ ORDER BY
     total_bookings DESC;
 
 
+    
+
 SELECT 
     p.property_id,
     p.name AS property_name,
     COUNT(b.booking_id) AS total_bookings,
-    RANK() OVER (ORDER BY COUNT(b.booking_id) DESC) AS booking_rank
+    
+    -- Assigns a unique sequential number to each property
+    ROW_NUMBER() OVER (ORDER BY COUNT(b.booking_id) DESC) AS row_number_rank,
+    
+    -- Assigns same rank to properties with equal booking counts
+    RANK() OVER (ORDER BY COUNT(b.booking_id) DESC) AS rank_by_bookings
+    
 FROM 
     Property p
 LEFT JOIN 
@@ -28,4 +36,4 @@ ON
 GROUP BY 
     p.property_id, p.name
 ORDER BY 
-    booking_rank;
+    total_bookings DESC;
